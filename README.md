@@ -1,6 +1,6 @@
 ##Jupyter Notebook + Flask Docker Image
 
-[Docker Hub Repo](https://hub.docker.com/r/burrito/notebook/)
+[Docker Hub Repo](https://hub.docker.com/r/burrito/notebook/) <br>
 [Github Source](https://github.com/ajay-d/docker-notebook)
 
 ##How to run
