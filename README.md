@@ -1,9 +1,11 @@
-##Jupyter Notebook + Flask Docker Image
+Jupyter Notebook + Flask Docker Image
+=====
 
-[Docker Hub Repo](https://hub.docker.com/r/burrito/notebook/) <br>
+[Docker Hub Repo](https://hub.docker.com/r/burrito/notebook/)  
 [Github Source](https://github.com/ajay-d/docker-notebook)
 
-##How to run
+How to run
+-----
 Select a running machine
 ```
 docker-machine ls
