@@ -1,5 +1,8 @@
 ##Jupyter Notebook + Flask Docker Image
 
+(Docker Hub)[https://hub.docker.com/r/burrito/notebook/]
+(Github)[https://github.com/ajay-d/docker-notebook]
+
 ##How to run
 Select a running machine
 ```
