@@ -21,10 +21,10 @@ RUN apt-get update && apt-get install -y \
 RUN add-apt-repository ppa:staticfloat/juliareleases
 RUN add-apt-repository ppa:staticfloat/julia-deps
 
-#Add new cran repo
+##Add new cran repo
 RUN echo 'deb https://cloud.r-project.org/bin/linux/ubuntu xenial/' >> /etc/apt/sources.list
 
-##And Key
+##Add Key
 RUN gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E084DAB9
 RUN gpg -a --export E084DAB9 | apt-key add -
 
@@ -56,11 +56,10 @@ RUN su - -c "R -e \"install.packages(c( \
    'xml2' \
 ), repos = 'http://cloud.r-project.org/')\""
 
-#XGBoost
+##Install XGBoost
 RUN su - -c "R -e \"install.packages('xgboost', repos='http://dmlc.ml/drat/', type='source') \""
 
 RUN pip3 install --upgrade pip
-
 RUN pip3 install \
     flask \
     jupyter \
@@ -70,9 +69,17 @@ RUN pip3 install \
     scipy \
     scikit-learn
 
+##Install Tensorflow
 ENV TF_BINARY_URL https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.11.0rc0-cp35-cp35m-linux_x86_64.whl
-
 RUN pip3 install --upgrade $TF_BINARY_URL
+
+##Install XGBoost
+RUN cd /tmp && \
+    git clone --recursive https://github.com/dmlc/xgboost && \
+    cd xgboost && \
+    make -j4 &&\
+    cd python-package && \
+    python3 setup.py install
 
 RUN pip3 list
 RUN cat /etc/debian_version

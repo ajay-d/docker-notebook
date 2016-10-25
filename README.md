@@ -1,7 +1,6 @@
 Data Science Image
 =====
 Lightweight image with Julia, R and Python.
-Comes in under 400 MB
 
 [Docker Hub Repo](https://hub.docker.com/r/burrito/notebook/)  
 [Github Source](https://github.com/ajay-d/docker-notebook)
@@ -20,6 +19,7 @@ Based off of:
    * numpy
    * pandas
    * scikit-learn
+   * xgboost
 
 To start container interactively:
 -----
