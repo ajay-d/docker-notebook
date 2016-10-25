@@ -50,7 +50,6 @@ RUN su - -c "R -e \"install.packages(c( \
    'rbokeh', \
    'readr', \
    'Rcpp', \
-   'shiny', \
    'stringr', \
    'tidyr', \
    'xml2' \
@@ -81,6 +80,8 @@ RUN cd /tmp && \
     cd python-package && \
     python3 setup.py install
 
+EXPOSE 8888
+    
 RUN pip3 list
 RUN cat /etc/debian_version
 RUN cat /etc/issue.net
