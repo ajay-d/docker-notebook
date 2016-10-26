@@ -95,7 +95,7 @@ RUN R -e "install.packages(c( \
 #RUN su - -c "R -e \"IRkernel::installspec(user = FALSE)\""
 
 RUN R -e "devtools::install_github('IRkernel/IRkernel')"
-RUN R -e "Rkernel::installspec(user = FALSE)"
+RUN R -e "IRkernel::installspec(user = FALSE)"
 
 ##Install Julia Kernel
 RUN julia -e "Pkg.add(\"IJulia\")"
