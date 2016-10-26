@@ -97,6 +97,10 @@ RUN R -e "install.packages(c( \
 RUN R -e "devtools::install_github('IRkernel/IRkernel')"
 RUN R -e "IRkernel::installspec(user = FALSE)"
 
+#Install Tensorflow Package
+ENV TENSORFLOW_PYTHON_VERSION 3
+RUN R -e "devtools::install_github('rstudio/tensorflow')"
+
 ##Install Julia Kernel
 RUN julia -e "Pkg.add(\"IJulia\")"
 RUN julia -e "Pkg.update()"

@@ -12,6 +12,7 @@ Based off of:
 * R 3.3.1
    * dplyr 
    * stringr
+   * [tensorflow](https://github.com/rstudio/tensorflow)
    * tidyr
    * xgboost
 * Python 3.5.2
@@ -22,6 +23,7 @@ Based off of:
    * xgboost
 
 To start a notebook:
+-----
 ```
 $ docker run -d -p 8888:8888 -v `pwd`:/home/work burrito/notebook sh -c "jupyter notebook --no-browser --port 8888 --ip=0.0.0.0"
 $ docker run -d -p 8888:8888 burrito/notebook sh -c "jupyter notebook --no-browser --port 8888 --ip=0.0.0.0"
@@ -43,7 +45,17 @@ $ R
 ```
 ---
 To run a Python 3 script:
+-----
 ```
 $ docker run -it -v `pwd`:/home/work burrito/notebook python3 script.py
+```
+---
+Run Tensorflow from R:
+-----
+```
+library(tensorflow)
+sess = tf$Session()
+hello <- tf$constant('Hello, TensorFlow!')
+sess$run(hello)
 ```
 ---
