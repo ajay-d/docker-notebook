@@ -55,22 +55,8 @@ RUN su - -c "R -e \"install.packages(c( \
    'xml2' \
 ), repos = 'http://cloud.r-project.org/')\""
 
-##Install R Kernel
-RUN su - -c "R -e \"install.packages(c( \
-   'repr', \ 
-   'IRdisplay', \ 
-   'evaluate', \ 
-   'crayon', \
-   'pbdZMQ', \
-   'uuid', \
-   'digest' \
-), repos = 'http://cloud.r-project.org/')\""
-
-RUN su - -c "R -e \"devtools::install_github('IRkernel/IRkernel')\""
-RUN su - -c "R -e \"IRkernel::installspec(user = FALSE)\""
-
-##Install XGBoost
-RUN su - -c "R -e \"install.packages('xgboost', repos='http://dmlc.ml/drat/', type='source') \""
+##Install XGBoost - R
+RUN R -e "install.packages('xgboost', repos='http://dmlc.ml/drat/', type='source')"
 
 RUN pip3 install --upgrade pip
 RUN pip3 install \
@@ -86,13 +72,34 @@ RUN pip3 install \
 ENV TF_BINARY_URL https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.11.0rc0-cp35-cp35m-linux_x86_64.whl
 RUN pip3 install --upgrade $TF_BINARY_URL
 
-##Install XGBoost
+##Install XGBoost - python
 RUN cd /tmp && \
     git clone --recursive https://github.com/dmlc/xgboost && \
     cd xgboost && \
     make -j4 &&\
     cd python-package && \
     python3 setup.py install
+
+##Install R Kernel
+RUN R -e "install.packages(c( \
+   'repr', \ 
+   'IRdisplay', \ 
+   'evaluate', \ 
+   'crayon', \
+   'pbdZMQ', \
+   'uuid', \
+   'digest' \
+), repos = 'http://cloud.r-project.org/') "
+
+#RUN su - -c "R -e \"devtools::install_github('IRkernel/IRkernel')\""
+#RUN su - -c "R -e \"IRkernel::installspec(user = FALSE)\""
+
+RUN R -e "devtools::install_github('IRkernel/IRkernel')"
+RUN R -e "Rkernel::installspec(user = FALSE)"
+
+##Install Julia Kernel
+RUN julia -e "Pkg.add(\"IJulia\")"
+RUN julia -e "Pkg.update()"
 
 EXPOSE 8888
     
