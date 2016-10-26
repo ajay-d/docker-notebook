@@ -22,14 +22,15 @@ Based off of:
    * xgboost
 
 To start a notebook:
-~~docker run -d -p 8888:8888 -v `pwd`:/home/work burrito/notebook jupyter notebook --no-browser --port 8888 --ip=0.0.0.0~~
-~~docker run -d -p 8888:8888 burrito/notebook jupyter notebook --no-browser --port 8888 --ip=0.0.0.0~~
-These should work, but <https://github.com/ipython/ipython/issues/7062>
 ```
 $ docker run -d -p 8888:8888 -v `pwd`:/home/work burrito/notebook sh -c "jupyter notebook --no-browser --port 8888 --ip=0.0.0.0"
 $ docker run -d -p 8888:8888 burrito/notebook sh -c "jupyter notebook --no-browser --port 8888 --ip=0.0.0.0"
 ```
 ---
+~~docker run -d -p 8888:8888 -v `pwd`:/home/work burrito/notebook jupyter notebook --no-browser --port 8888 --ip=0.0.0.0~~  
+~~docker run -d -p 8888:8888 burrito/notebook jupyter notebook --no-browser --port 8888 --ip=0.0.0.0~~  
+These should work, but <https://github.com/ipython/ipython/issues/7062>
+
 Find IP address with `docker-machine ip default` on Windows
 Visit <http://127.0.0.1:8888/> (with the noted IP) for Jupyter Notebook
 Or <http://localhost:8888/> on Mac/Linux

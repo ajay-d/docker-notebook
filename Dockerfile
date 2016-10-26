@@ -55,6 +55,20 @@ RUN su - -c "R -e \"install.packages(c( \
    'xml2' \
 ), repos = 'http://cloud.r-project.org/')\""
 
+##Install R Kernel
+RUN su - -c "R -e \"install.packages(c( \
+   'repr', \ 
+   'IRdisplay', \ 
+   'evaluate', \ 
+   'crayon', \
+   'pbdZMQ', \
+   'uuid', \
+   'digest' \
+), repos = 'http://cloud.r-project.org/')\""
+
+RUN su - -c "R -e \"devtools::install_github('IRkernel/IRkernel')\""
+RUN su - -c "R -e \"IRkernel::installspec(user = FALSE)\""
+
 ##Install XGBoost
 RUN su - -c "R -e \"install.packages('xgboost', repos='http://dmlc.ml/drat/', type='source') \""
 
