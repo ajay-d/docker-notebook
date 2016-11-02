@@ -27,6 +27,9 @@ To start a notebook:
 ```
 $ docker run -d -p 8888:8888 -v `pwd`:/home/work burrito/notebook sh -c "jupyter notebook --no-browser --port 8888 --ip=0.0.0.0"
 $ docker run -d -p 8888:8888 burrito/notebook sh -c "jupyter notebook --no-browser --port 8888 --ip=0.0.0.0"
+
+$ docker run -i -t -p 8888:8888 burrito/notebook
+$ docker exec `container ID` jupyter notebook --no-browser --port 8888 --ip=0.0.0.0
 ```
 ---
 ~~docker run -d -p 8888:8888 -v `pwd`:/home/work burrito/notebook jupyter notebook --no-browser --port 8888 --ip=0.0.0.0~~  
@@ -48,6 +51,13 @@ To run a Python 3 script:
 -----
 ```
 $ docker run -it -v `pwd`:/home/work burrito/notebook python3 script.py
+```
+---
+Copy files in or out:
+-----
+```
+$ docker cp `local directory` `container ID`:/home/work
+$ docker cp `container ID`:/home/work/data.csv `local directory`
 ```
 ---
 Run Tensorflow from R:
