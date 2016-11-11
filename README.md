@@ -9,7 +9,7 @@ Based off of:
 * Ubuntu 16.04 LTS
 * Tensorflow 0.11 (CPU only)
 * Julia 0.5.0
-* R 3.3.1
+* R 3.3.2
    * dplyr 
    * stringr
    * [tensorflow](https://github.com/rstudio/tensorflow)
